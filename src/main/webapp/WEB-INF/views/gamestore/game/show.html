@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Person</title>
+</head>
+<body>
+    <!-- But what if not found? -->
+    <p th:text="${game.getName()}">VALUE</p>
+    <p th:text="${game.getDescription()}">VALUE</p>
+    <p th:text="${game.getGenre()}">VALUE</p>
+    <p th:text="${game.getPrice()}">VALUE</p>
+    <p th:text="${game.getAmount()}">VALUE</p>
+    <hr/>
+
+    <form th:action="@{/gamestore/{name}/edit(name=${game.getName()})}">
+        <input type="submit" value="Edit?"/>
+    </form>
+    <!-- Здесь можно реализовать кнопку продать (patch на количество -1) -->
+    <br/>
+
+    <form th:method="DELETE" th:action="@{/gamestore/{name}(name=${game.getName()})}">
+        <input type="submit" value="Delete?"/>
+    </form>
+
+    <br/>
+
+    <form th:action="@{/WEB-INF/views/gamestore}">
+        <input type="submit" value="Go back"/>
+    </form>
+</body>
+</html>
