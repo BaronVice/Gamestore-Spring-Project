@@ -21,7 +21,6 @@ public class GenreDAO {
         );
     }
 
-    // TODO Optional here (to make possible validation in controller if not exists)
     public Genre show(String name){
         return jdbcTemplate.query(
                 "SELECT * FROM genre where name=?",

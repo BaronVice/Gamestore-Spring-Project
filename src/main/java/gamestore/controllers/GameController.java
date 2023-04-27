@@ -1,6 +1,7 @@
 package gamestore.controllers;
 
 import gamestore.dao.GameDAO;
+import gamestore.dao.GenreDAO;
 import gamestore.models.Game;
 import gamestore.util.GameValidator;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ import javax.validation.Valid;
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class GameController {
     private final GameDAO gameDAO;
+    private final GenreDAO genreDAO;
     private final GameValidator gameValidator;
 
     @GetMapping()
@@ -33,7 +35,9 @@ public class GameController {
     }
 
     @GetMapping("/new")
-    public String sendGameCreation(@ModelAttribute("game") Game game){
+    public String sendGameCreation(@ModelAttribute("game") Game game,
+                                   Model model){
+        model.addAttribute("genres", genreDAO.index());
         return "gamestore/game/new";
     }
 
@@ -41,6 +45,7 @@ public class GameController {
     public String sendGameUpdate(Model model,
                                  @PathVariable("name") String name){
         model.addAttribute("game", gameDAO.show(name));
+        model.addAttribute("genres", genreDAO.index());
         return "gamestore/game/edit";
     }
 

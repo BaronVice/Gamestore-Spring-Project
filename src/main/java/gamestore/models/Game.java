@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.*;
 
-// TODO: make genre a list box/option box (or how this is called)
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -9,18 +9,18 @@
     <p th:text="${genre.getName()}">VALUE</p>
     <p th:text="${genre.getDescription()}">VALUE</p>
     <hr/>
+    <div th:if="${!genre.getName().equals('Unknown')}">
+        <form th:action="@{/gamestore/genre/{name}/edit(name=${genre.getName()})}">
+            <input type="submit" value="Edit?"/>
+        </form>
+        <!-- Здесь можно реализовать кнопку продать (patch на количество -1) -->
+        <br/>
 
-    <form th:action="@{/gamestore/genre/{name}/edit(name=${genre.getName()})}">
-        <input type="submit" value="Edit?"/>
-    </form>
-    <!-- Здесь можно реализовать кнопку продать (patch на количество -1) -->
-    <br/>
-
-    <form th:method="DELETE" th:action="@{/gamestore/genre/{name}(name=${genre.getName()})}">
-        <input type="submit" value="Delete?"/>
-    </form>
-
-    <br/>
+        <form th:method="DELETE" th:action="@{/gamestore/genre/{name}(name=${genre.getName()})}">
+            <input type="submit" value="Delete?"/>
+        </form>
+        <br/>
+    </div>
 
     <form th:action="@{/gamestore/genre}">
         <input type="submit" value="Go back"/>
