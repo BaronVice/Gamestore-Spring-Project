@@ -4,7 +4,6 @@ package gamestore.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.postgresql.util.PGmoney;
 
 import javax.validation.constraints.*;
 
@@ -15,7 +14,7 @@ import javax.validation.constraints.*;
 @AllArgsConstructor
 public class Game {
     @NotEmpty(message = "Name cannot be empty")
-    @Size (min = 1, max = 100, message = "Name length should be between 2 and 100 characters")
+    @Size (min = 1, max = 100, message = "Name length should be between 1 and 100 characters")
     private String name;
     @Size (max = 200, message = "Description maximum length is 200 characters")
     private String description;

@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 @AllArgsConstructor(onConstructor = @__(@Autowired))
@@ -22,12 +21,13 @@ public class GenreDAO {
         );
     }
 
-    public Optional<Genre> show(String name){
+    // TODO Optional here (to make possible validation in controller if not exists)
+    public Genre show(String name){
         return jdbcTemplate.query(
                 "SELECT * FROM genre where name=?",
                 new Object[]{name},
                 new BeanPropertyRowMapper<>(Genre.class)
-        ).stream().findAny();
+        ).stream().findAny().orElse(null);
     }
 
     public void save(Genre genre){

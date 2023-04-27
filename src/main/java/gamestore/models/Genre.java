@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class Genre {
     @NotEmpty(message = "Name cannot be empty")
-    @Size (min = 5, max = 30, message = "Name length should be between 5 and 30 characters")
+    @Size (min = 1, max = 30, message = "Name length should be between 5 and 30 characters")
     private String name;
 
     @Size (max = 200, message = "Description maximum length is 200 characters")

@@ -6,7 +6,7 @@
 </head>
 <body>
     <!-- When submit button is clicked - it will send post action to create person -->
-    <form th:method="POST" th:action="@{/gamestore/game}" th:object="${game}">
+    <form th:method="POST" th:action="@{/gamestore/genre}" th:object="${genre}">
         <label for="name">Name: </label>
         <input type="text" th:field="*{name}" id="name"/>
         <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"> Name error </div>
@@ -15,23 +15,11 @@
         <input type="text" th:field="*{description}" id="description"/>
         <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"> Description error </div>
         <br/>
-        <label for="genre">Genre: </label>
-        <input type="text" th:field="*{genre}" id="genre"/>
-        <div style="color: red" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"> Genre error </div>
-        <br/>
-        <label for="price">Price: </label>
-        <input type="text" th:field="*{price}" id="price"/>
-        <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"> Price error </div>
-        <br/>
-        <label for="amount">Amount: </label>
-        <input type="text" th:field="*{amount}" id="amount">
-        <div style="color: red" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"> Amount error </div>
-        <br/>
         <hr/>
         <input type="submit" value="Add!"/>
     </form>
 
-    <form th:action="@{/gamestore/game}">
+    <form th:action="@{/gamestore/genre}">
         <input type="submit" value="Go back"/>
     </form>
 </body>

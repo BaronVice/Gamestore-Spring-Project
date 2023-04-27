@@ -6,16 +6,16 @@
 </head>
 <body>
     <!-- Stands for each -->
-    <div th:each="game : ${games}">
-        <!-- Want to make an url to every mail and text is name + surname -->
-        <a th:href="@{/gamestore/{name}(name=${game.getName()})}"
-           th:text="${game.getName()} +': '+ ${game.getDescription()}">user</a>
-    </div>
+    <div style="color: dodgerblue"> GameStore </div>
 
     <hr/>
 
-    <form th:action="@{/gamestore/new}">
-        <input type="submit" value="Add new game"/>
+    <form th:action="@{/gamestore/game}">
+        <input type="submit" value="Go to game catalog"/>
+    </form>
+    <br/>
+    <form th:action="@{/gamestore/genre}">
+        <input type="submit" value="Game genres"/>
     </form>
 </body>
 </html>

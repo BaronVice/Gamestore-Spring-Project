@@ -6,26 +6,23 @@
 </head>
 <body>
     <!-- But what if not found? -->
-    <p th:text="${game.getName()}">VALUE</p>
-    <p th:text="${game.getDescription()}">VALUE</p>
-    <p th:text="${game.getGenre()}">VALUE</p>
-    <p th:text="${game.getPrice()}">VALUE</p>
-    <p th:text="${game.getAmount()}">VALUE</p>
+    <p th:text="${genre.getName()}">VALUE</p>
+    <p th:text="${genre.getDescription()}">VALUE</p>
     <hr/>
 
-    <form th:action="@{/gamestore/game/{name}/edit(name=${game.getName()})}">
+    <form th:action="@{/gamestore/genre/{name}/edit(name=${genre.getName()})}">
         <input type="submit" value="Edit?"/>
     </form>
     <!-- Здесь можно реализовать кнопку продать (patch на количество -1) -->
     <br/>
 
-    <form th:method="DELETE" th:action="@{/gamestore/game/{name}(name=${game.getName()})}">
+    <form th:method="DELETE" th:action="@{/gamestore/genre/{name}(name=${genre.getName()})}">
         <input type="submit" value="Delete?"/>
     </form>
 
     <br/>
 
-    <form th:action="@{/gamestore/game}">
+    <form th:action="@{/gamestore/genre}">
         <input type="submit" value="Go back"/>
     </form>
 </body>

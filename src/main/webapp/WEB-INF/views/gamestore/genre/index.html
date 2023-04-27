@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All gamestore</title>
+</head>
+<body>
+    <!-- Stands for each -->
+    <div th:each="genre : ${genres}">
+        <!-- Want to make an url to every mail and text is name + surname -->
+        <a th:href="@{/gamestore/genre/{name}(name=${genre.getName()})}"
+           th:text="${genre.getName()} +': '+ ${genre.getDescription()}">genre</a>
+    </div>
+
+    <hr/>
+
+    <form th:action="@{/gamestore/genre/new}">
+        <input type="submit" value="Add new genre"/>
+    </form>
+    <br/>
+    <form th:action="@{/gamestore}">
+        <input type="submit" value="Main page"/>
+    </form>
+</body>
+</html>
