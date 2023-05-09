@@ -26,13 +26,13 @@ public class GameValidator implements Validator {
         Game game = (Game) o;
         if (gameDAO.show(game.getName()) != null)
             errors.rejectValue("name", "", "Game with this name is already exists");
-        if (genreDAO.show(game.getGenre()) == null)
+        if (genreDAO.show(game.getGenre().getName()) == null)
             errors.rejectValue("genre", "", "Chosen genre doesn't exist");
     }
 
     public void validateIfUpdatedNameEqualsPrevious(Object o, Errors errors) {
         Game game = (Game) o;
-        if (genreDAO.show(game.getGenre()) == null)
+        if (genreDAO.show(game.getGenre().getName()) == null)
             errors.rejectValue("genre", "", "Chosen genre doesn't exist");
     }
 }
