@@ -19,7 +19,7 @@
 <!--        <input type="text" th:field="*{genre}" id="genre"/>-->
 <!--        <div style="color: red" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"> Genre error </div>-->
         <select th:object="${game}" th:field="*{genre}" id="genre">
-            <option th:each="genre: ${genres}" th:value="${genre.getName()}" th:text="${genre.getName()}">OPTION</option>
+            <option th:each="genre: ${genres}" th:value="${genre}" th:text="${genre.getName()}">OPTION</option>
         </select>
         <br/>
         <label for="price">Price: </label>

@@ -27,5 +27,5 @@ public class Genre implements Serializable {
     private String description;
 
     @OneToMany(mappedBy = "genre")
-    private List<Game> game;
+    private List<Game> games;
 }
