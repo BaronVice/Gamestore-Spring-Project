@@ -32,9 +32,11 @@ public class GameDAO {
         Session session = sessionFactory.getCurrentSession();
         session.save(game);
 
-        // Good practice to put this game into genre as well
-        session.merge(game.getGenre());
-        game.getGenre().getGames().add(game);
+        // I'm not sure, but will take a guess that @Cascade will handle this stuff
+        
+//        Good practice to put this game into genre as well
+//        session.merge(game.getGenre());
+//        game.getGenre().getGames().add(game);
     }
 
     @Transactional

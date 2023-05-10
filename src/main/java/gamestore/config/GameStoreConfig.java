@@ -30,7 +30,7 @@ import java.util.Properties;
         "classpath:application.properties",
         "classpath:hibernate.properties"
 })
-@EnableTransactionManagement()
+@EnableTransactionManagement
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class GameStoreConfig implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;

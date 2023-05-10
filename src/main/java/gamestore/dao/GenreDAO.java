@@ -17,32 +17,36 @@ public class GenreDAO {
 
     @Transactional(readOnly = true)
     public List<Genre> index(){
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from Genre ", Genre.class).getResultList();
     }
 
     @Transactional(readOnly = true)
     public Genre show(String name){
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         return session.get(Genre.class, name);
     }
 
     @Transactional
     public void save(Genre genre){
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         session.save(genre);
     }
 
     @Transactional
     public void update(Genre updatedGenre, String previousName){
-        Session session = sessionFactory.openSession();
-        Genre previousGenre = session.get(Genre.class, String.format("from Genre where name=%s", previousName));
-        previousGenre = updatedGenre;
+        Session session = sessionFactory.getCurrentSession();
+        Genre previousGenre = session.get(Genre.class, previousName);
+
+        session.detach(previousGenre);
+        previousGenre.setName(updatedGenre.getName());
+        previousGenre.setDescription(updatedGenre.getDescription());
+        session.merge(previousGenre);
     }
 
     @Transactional
     public void delete(String name){
-        Session session = sessionFactory.openSession();
-        session.createQuery(String.format("delete from Genre where name=%s", name));
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(session.get(Genre.class, name));
     }
 }

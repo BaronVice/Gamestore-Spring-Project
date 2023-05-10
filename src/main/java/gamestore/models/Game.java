@@ -4,10 +4,13 @@ package gamestore.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+
+// TODO: create id for primary key (hard times with update)
 
 @Entity
 @Table(name = "game")
@@ -27,6 +30,7 @@ public class Game implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "genre_name", referencedColumnName = "name")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private Genre genre;
 
     @Column(name = "price")
