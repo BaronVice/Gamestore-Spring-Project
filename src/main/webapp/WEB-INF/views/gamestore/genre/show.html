@@ -10,13 +10,13 @@
     <p th:text="${genre.getDescription()}">VALUE</p>
     <hr/>
     <div th:if="${!genre.getName().equals('Unknown')}">
-        <form th:action="@{/gamestore/genre/{name}/edit(name=${genre.getName()})}">
+        <form th:action="@{/gamestore/genre/{id}/edit(id=${genre.getId()})}">
             <input type="submit" value="Edit?"/>
         </form>
         <!-- Здесь можно реализовать кнопку продать (patch на количество -1) -->
         <br/>
 
-        <form th:method="DELETE" th:action="@{/gamestore/genre/{name}(name=${genre.getName()})}">
+        <form th:method="DELETE" th:action="@{/gamestore/genre/{id}(name=${genre.getId()})}">
             <input type="submit" value="Delete?"/>
         </form>
         <br/>

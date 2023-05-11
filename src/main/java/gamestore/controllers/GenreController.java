@@ -26,9 +26,9 @@ public class GenreController {
     }
 
     @GetMapping("/{name}")
-    public String show(@PathVariable("name") String genreName,
+    public String show(@PathVariable("name") int id,
                        Model model){
-        model.addAttribute("genre", genreDAO.show(genreName));
+        model.addAttribute("genre", genreDAO.show(id));
         return "gamestore/genre/show";
     }
 

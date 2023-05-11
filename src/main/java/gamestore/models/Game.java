@@ -17,8 +17,13 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Game implements Serializable {
+public class Game {
+
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @Column(name = "name")
     @NotEmpty(message = "Name cannot be empty")
     @Size (min = 1, max = 100, message = "Name length should be between 1 and 100 characters")

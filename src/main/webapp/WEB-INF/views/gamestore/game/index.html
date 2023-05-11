@@ -8,8 +8,9 @@
     <!-- Stands for each -->
     <div th:each="game : ${games}">
         <!-- Want to make an url to every mail and text is name + surname -->
-        <a th:href="@{/gamestore/game/{name}(name=${game.getName()})}"
-           th:text="${game.getName()} +': '+ ${game.getDescription()}">user</a>
+        <a th:href="@{/gamestore/game/{id}(id=${game.getId()})}"
+           th:text="${game.getName()} +': '+ ${game.getDescription() == null ?
+                    'no description yet' : game.getDescription()}">user</a>
     </div>
     <div style="color: dodgerblue" th:if="${games.size() == 0}">No games in store yet</div>
 

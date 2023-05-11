@@ -15,8 +15,13 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Genre implements Serializable {
+public class Genre {
+
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @Column(name = "name")
     @NotEmpty(message = "Name cannot be empty")
     @Size (min = 1, max = 30, message = "Name length should be between 1 and 30 characters")
@@ -28,6 +33,6 @@ public class Genre implements Serializable {
     @NonNull
     private String description;
 
-    @OneToMany(mappedBy = "genre")
+    @OneToMany(mappedBy = "genre") // TODO: genre though?
     private List<Game> games;
 }

@@ -13,13 +13,13 @@
     <p th:text="${game.getAmount()}">VALUE</p>
     <hr/>
 
-    <form th:action="@{/gamestore/game/{name}/edit(name=${game.getName()})}">
+    <form th:action="@{/gamestore/game/{id}/edit(id=${game.getId()})}">
         <input type="submit" value="Edit?"/>
     </form>
     <!-- Здесь можно реализовать кнопку продать (patch на количество -1) -->
     <br/>
 
-    <form th:method="DELETE" th:action="@{/gamestore/game/{name}(name=${game.getName()})}">
+    <form th:method="DELETE" th:action="@{/gamestore/game/{id}(id=${game.getId()})}">
         <input type="submit" value="Delete?"/>
     </form>
 

@@ -22,9 +22,17 @@ public class GenreDAO {
     }
 
     @Transactional(readOnly = true)
+    public Genre show(int id){
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Genre.class, id);
+    }
+
+    @Transactional(readOnly = true)
     public Genre show(String name){
         Session session = sessionFactory.getCurrentSession();
-        return session.get(Genre.class, name);
+        return session.createQuery(
+                String.format("from Genre where nickname=%s", name), Genre.class
+        ).getResultList().stream().findAny().orElse(null);
     }
 
     @Transactional

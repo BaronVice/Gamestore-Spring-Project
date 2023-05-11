@@ -6,7 +6,7 @@
 </head>
 <body>
     <!-- When submit button is clicked - it will send post action to update person -->
-    <form th:method="PATCH" th:action="@{/gamestore/genre/{name}(name=${genre.getName()})}" th:object="${genre}">
+    <form th:method="PATCH" th:action="@{/gamestore/genre/{id}(id=${genre.getId()})}" th:object="${genre}">
         <label for="name">Name: </label>
         <input type="text" th:field="*{name}" id="name"/>
         <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"> Name error </div>
