@@ -24,8 +24,4 @@ public class GenreValidator implements Validator {
         if (genreDAO.show(genre.getName()) != null)
             errors.rejectValue("name", "", "This genre is already exists");
     }
-
-    public void validateIfUpdatedNameEqualsPrevious(Object o, Errors errors) {
-        Genre genre = (Genre) o;
-    }
 }

@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Genre {
+public class Genre implements Serializable {
 
     @Id
     @Column(name = "id")

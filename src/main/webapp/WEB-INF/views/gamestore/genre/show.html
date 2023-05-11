@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Person</title>
+    <title>Genre</title>
 </head>
 <body>
-    <!-- But what if not found? -->
     <p th:text="${genre.getName()}">VALUE</p>
     <p th:text="${genre.getDescription()}">VALUE</p>
     <hr/>
@@ -16,7 +15,7 @@
         <!-- Здесь можно реализовать кнопку продать (patch на количество -1) -->
         <br/>
 
-        <form th:method="DELETE" th:action="@{/gamestore/genre/{id}(name=${genre.getId()})}">
+        <form th:method="DELETE" th:action="@{/gamestore/genre/{id}(id=${genre.getId()})}">
             <input type="submit" value="Delete?"/>
         </form>
         <br/>

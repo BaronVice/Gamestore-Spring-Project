@@ -25,8 +25,8 @@ public class GenreController {
         return "gamestore/genre/index";
     }
 
-    @GetMapping("/{name}")
-    public String show(@PathVariable("name") int id,
+    @GetMapping("/{id}")
+    public String show(@PathVariable("id") int id,
                        Model model){
         model.addAttribute("genre", genreDAO.show(id));
         return "gamestore/genre/show";
@@ -37,10 +37,10 @@ public class GenreController {
         return "gamestore/genre/new";
     }
 
-    @GetMapping("/{name}/edit")
-    public String sendGenreEdit(@PathVariable("name") String genreName,
+    @GetMapping("/{id}/edit")
+    public String sendGenreEdit(@PathVariable("id") int id,
                                 Model model){
-        model.addAttribute("genre", genreDAO.show(genreName));
+        model.addAttribute("genre", genreDAO.show(id));
         return "gamestore/genre/edit";
     }
 
@@ -56,27 +56,23 @@ public class GenreController {
         return "redirect:/gamestore/genre";
     }
 
-    @PatchMapping("/{name}")
-    public String edit(@PathVariable("name") String previousName,
+    @PatchMapping("/{id}")
+    public String edit(@PathVariable("id") int id,
                        @ModelAttribute("genre") @Valid Genre updatedGenre,
                        BindingResult bindingResult){
-        if (!previousName.equals(updatedGenre.getName()))
-            genreValidator.validate(updatedGenre, bindingResult);
-        else
-            genreValidator.validateIfUpdatedNameEqualsPrevious(updatedGenre, bindingResult);
+        genreValidator.validate(updatedGenre, bindingResult);
 
-        if (bindingResult.hasErrors()){
-            updatedGenre.setName(previousName);
+        // TODO: return this thing if updated name is same as old one (in validator as well)
+        if (bindingResult.hasErrors())
             return "gamestore/genre/edit";
-        }
 
-        genreDAO.update(updatedGenre, previousName);
-        return String.format("redirect:/gamestore/genre/%s", updatedGenre.getName());
+        genreDAO.update(updatedGenre, id);
+        return String.format("redirect:/gamestore/genre/%s", updatedGenre.getId());
     }
 
-    @DeleteMapping("/{name}")
-    public String delete(@PathVariable("name") String genreName){
-        genreDAO.delete(genreName);
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id){
+        genreDAO.delete(id);
         return "redirect:/gamestore/genre";
     }
 }
